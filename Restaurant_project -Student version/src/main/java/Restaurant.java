@@ -75,5 +75,14 @@ public class Restaurant implements org.junit.jupiter.api.function.Executable {
     public void execute() throws Throwable {
 
     }
+    //total order value of all the selected items
+    public int getTotalOrderValue(List<String> itemname){
+        int value =0;
+        for(String name:itemname){
+            Item item = findItemByName(name);
+            value = value +item.getPrice();
+        }
+        return value;
+    }
 
 }
