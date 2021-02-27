@@ -59,7 +59,23 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<<<<<<PRICE>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    @Test
+    public void selecting_items_from_a_particular_restaurant_should_return_total_order_value() {
+        List<String> myOrders = new ArrayList<>();
+        myOrders.add("Sweet corn soup");
+        myOrders.add("Vegetable lasagne");
+        Assertions.assertEquals(370,restaurant.getTotalOrderValue(myOrders));
+    }
+    @Test
+    public void selecting_non_existent_items_from_a_particular_restaurant_should_throw_NullPointerException_error()  {
+        List<String> myOrders = new ArrayList<>();
+        myOrders.add("juice");
+        myOrders.add("milkshake");
 
+        assertThrows(NullPointerException.class,
+                ()->restaurant.getTotalOrderValue(myOrders));
+    }
 
 
 }
